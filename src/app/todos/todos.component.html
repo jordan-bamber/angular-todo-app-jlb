@@ -4,7 +4,7 @@
 
 </section>
 
-<section class="body-section">
+<!-- <section class="body-section">
     <div class="body-container">
     
         <div class="add-todo-box">
@@ -29,13 +29,38 @@
         </div>
 
     </div>
-</section>
+</section> -->
+
+<section class="section">
+    <div class="container add-todo-box-container">
+
+        <div class="add-todo-box">
+                
+            <form>
+                <h2 class="title is-5">New Item</h2>
+
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                      <input class="input" type="text" placeholder="Type ToDo text here">
+                    </p>
+                    <p class="control">
+                      <button class="button alt-gradient-button">
+                        <i class="material-icons">add</i>
+                        Add
+                      </button>
+                    </p>
+                  </div>
+
+            </form>
+
+        </div>
+    </div>
 
 <section class="section">
     <div class="container">
         
         <div class="todo-list">
-           <div class="todo-item">
+           <div class="todo-item completed">
                <div class="check-box">
                   <i class="material-icons">check</i>
                </div>
@@ -50,6 +75,15 @@
                 </div>
                 <div class="todo-text">
                    This only has one line of text
+                </div>
+
+                <div class="todo-controls-box">
+                    <div class="todo-controls-button">
+                        <i class="material-icons">edit</i>
+                    </div>
+                    <div class="todo-controls-button is-danger">
+                        <i class="material-icons">delete</i>
+                    </div>
                 </div>
              </div>
         </div>

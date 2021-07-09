@@ -1,10 +1,10 @@
-.heading-section{
+.heading-section {
     background: linear-gradient(#1B92E4,#1BE4D1);
 
     padding: 150px;
     padding-bottom: 150px;
 
-    h1.title{
+    h1.title {
         font-weight: bold;
         color: white;
         text-shadow: 0px 1px 2px rgba(black, 0.1);
@@ -12,8 +12,9 @@
 
 }
 
-.body-container {
-    max-width: 800px;
+//why was important needed?
+.container {
+   max-width: 800px  !important;
     align-items: center;
 }
 
@@ -40,6 +41,11 @@
 
     border-bottom: 1px solid #f2f3f5;
 
+    //Should this be down below in completed method?
+    &.completed {
+        color: #aaa;
+    }
+
 }
 
 .todo-item .check-box {
@@ -61,6 +67,8 @@
         font-size: 20px;
         margin: auto;
 
+        color: #333;
+
         //hide by default
         opacity: 0;
 
@@ -74,4 +82,69 @@
     i.material-icons {
         opacity: 0.3;
     }
+}
+
+.todo-item.completed .check-box {
+    background: #6dff6d;
+    border-color: #6dff6d;
+
+    i.material-icons {
+        opacity: 1;
+    }
+}
+
+.todo-item .todo-controls-box  {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+
+    display: flex;
+
+    //hide by default
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(2px);
+
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.todo-item:hover .todo-controls-box {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .4s;
+    
+    transform: translateY(0);
+}
+
+.todo-controls-box .todo-control-button {
+    display: flex;
+    background: #f5f7f8;
+
+    padding: 7px 10px;
+
+    i.material-icons    {
+        font-size: 20px;
+    }
+
+    &:hover {
+        background: #eee;
+    }
+
+    &:active {
+        background: #e5e7e8;
+    }
+
+    //do I want to do this?
+    &:first-of-type {
+        border-top-left-radius: 7px;
+    }
+
+    &:last-of-type {
+        border-top-right-radius: 7px;
+    }
+
+}
+
+.todo-controls-box .todo-controls-button.is-danger:hover  i.material-icons {
+    color: rgb(155,27,27);
 }
