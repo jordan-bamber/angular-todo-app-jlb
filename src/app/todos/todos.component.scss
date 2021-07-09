@@ -1,3 +1,12 @@
+/*
+    Notes: 
+    -Add some is active effects for the controls buttons?
+    -check all comments below
+
+
+*/
+
+
 .heading-section {
     background: linear-gradient(#1B92E4,#1BE4D1);
 
@@ -32,6 +41,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+
+    position: relative;
 
     cursor: pointer;
 
@@ -143,6 +154,10 @@
         border-top-right-radius: 7px;
     }
 
+}
+
+.todo-controls-box .todo-controls-button.is-edit:hover  i.material-icons {
+    color: #b3b300;
 }
 
 .todo-controls-box .todo-controls-button.is-danger:hover  i.material-icons {
