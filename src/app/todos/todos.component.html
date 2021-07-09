@@ -55,39 +55,22 @@
 
         </div>
     </div>
+</section>
 
 <section class="section">
     <div class="container">
         
         <div class="todo-list">
-           <div class="todo-item completed">
+           <div class="todo-item" *ngFor="let todo of todoArray" [class.completed]="todo.completed">
                <div class="check-box">
                   <i class="material-icons">check</i>
                </div>
                <div class="todo-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis, cumque iusto quos eum alias reiciendis doloribus perferendis iste. Hic, tenetur nemo ea alias eos libero non expedita sed animi.
+                  {{todo.text}}
                </div>
 
                
                <div class="todo-controls-box">
-                <div class="todo-controls-button is-edit">
-                    <i class="material-icons">edit</i>
-                </div>
-                <div class="todo-controls-button is-danger">
-                    <i class="material-icons">delete</i>
-                </div>
-            </div>
-            </div>
-
-            <div class="todo-item">
-                <div class="check-box">
-                   <i class="material-icons">check</i>
-                </div>
-                <div class="todo-text">
-                   This only has one line of text
-                </div>
-
-                <div class="todo-controls-box">
                     <div class="todo-controls-button is-edit">
                         <i class="material-icons">edit</i>
                     </div>
@@ -95,8 +78,8 @@
                         <i class="material-icons">delete</i>
                     </div>
                 </div>
-
-             </div>
+            </div>
+            
         </div>
     </div>
 
