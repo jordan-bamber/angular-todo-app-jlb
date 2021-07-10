@@ -12,7 +12,7 @@
 .heading-section {
     background: linear-gradient(#1B92E4,#1BE4D1);
 
-    padding: 150px;
+    padding: 75px;
     padding-bottom: 150px;
 
     h1.title {
@@ -26,16 +26,14 @@
 //why was important needed?
 .container {
    max-width: 800px  !important;
-    align-items: center;
+    //align-items: center;
 }
 
 .add-todo-box-container {
     position: sticky !important;
     top: 0 !important;
     z-index: 1 !important;
-}
 
-.add-todo-box {
     padding: 25px;
     background: white;
     // border: 1px solid black;
@@ -44,4 +42,14 @@
 
     box-shadow: 0 4px 12px rgba(black, 0.08);
 }
+
+// .add-todo-box {
+//     padding: 25px;
+//     background: white;
+//     // border: 1px solid black;
+//     border-radius: 4px;
+//     margin-top: -68px;
+
+//     box-shadow: 0 4px 12px rgba(black, 0.08);
+// }
 

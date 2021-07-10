@@ -7,8 +7,9 @@ import { todo } from './todo.model';
 export class DataService {
 
   todoArray: todo[] = [
-    new todo('this is a test', true),
-    new todo('John Q Testing big task for today: Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis, cumque iusto quos eum alias reiciendis doloribus perferendis iste. Hic, tenetur nemo ea alias eos libero non expedita sed animi.')
+    new todo('this is a test todo item', true),
+    new todo('Get buckets'),
+    new todo('Robbie P big task for today: Buy a third bike. Preferrably >2500 cubic centimeter engine. Big enough seat to fit the whole family at once, it should be more of a family vehicle. Like the bike version of a minivan.')
   ];
 
   constructor() { }
