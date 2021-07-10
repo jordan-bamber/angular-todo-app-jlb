@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bulma/bulma.sass';
 
+html, body { height: 100%; }
+body { margin: 0;  }
+
 .alt-gradient-button {
     border: none;
     background: linear-gradient(to right, rgb(236,72,140),rgb(240,54,82));
@@ -29,4 +32,6 @@
         margin-left: -3px;
     }
 }
+
+
 

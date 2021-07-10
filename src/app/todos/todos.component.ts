@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
 import { DataService } from '../shared/data.service';
 import { todo } from '../shared/todo.model';
 
@@ -13,7 +15,7 @@ export class TodosComponent implements OnInit {
   todoArray: todo[] = [];
   showValidationErrors: boolean = false;
   
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.todoArray = this.dataService.getAllTodos();
@@ -30,7 +32,24 @@ export class TodosComponent implements OnInit {
     form.reset();
 
     //added this so always returns. Good idea?
-    return;
+    return '';
   }
 
+  toggleCompleted(todo: todo) {
+    todo.completed = !todo.completed
+  }
+
+  editTodo(todo: todo) {
+    
+    const index = this.todoArray.indexOf(todo);
+
+    let dialogRef = this.dialog.open(EditTodoDialogComponent, {
+      width: '700px',
+    });
+    // this.dataService.updateTodo()
+  } 
+
+
 }
+
+
