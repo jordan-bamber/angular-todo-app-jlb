@@ -8,10 +8,10 @@
 
 
     <div class="todo-controls-box" (click)="$event.stopPropagation()">
-        <div class="todo-controls-button is-edit" (click)="onEditClicked()">
+        <div class="todo-controls-button is-edit" appToolTip="Edit Todo" (click)="onEditClicked()">
             <i class="material-icons">edit</i>
         </div>
-        <div class="todo-controls-button is-danger">
+        <div class="todo-controls-button is-danger" appToolTip="Delete Todo" (click)="onDeleteClicked()">
             <i class="material-icons">delete</i>
         </div>
     </div>

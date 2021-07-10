@@ -24,6 +24,7 @@
                     </p>
                 </div>
                
+                <!-- Form Validation -->
                 <div *ngIf="todoTextField.invalid && showValidationErrors">
                     <p class="help is-danger" *ngIf="todoTextField.errors?.required">Please enter ToDo text</p>
                 </div>
@@ -44,6 +45,7 @@
                 [todo]="todo" 
                 (todoClicked)="toggleCompleted(todo)"
                 (editClicked)="editTodo(todo)"
+                (deleteClicked)="deleteTodo(todo)"
                 ></app-todo-item>
 
         </div>

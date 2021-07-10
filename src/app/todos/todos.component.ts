@@ -40,14 +40,26 @@ export class TodosComponent implements OnInit {
   }
 
   editTodo(todo: todo) {
-    
+
     const index = this.todoArray.indexOf(todo);
 
+    //Angular MatDialog https://material.angular.io/components/dialog/overview
     let dialogRef = this.dialog.open(EditTodoDialogComponent, {
       width: '700px',
+      data: todo
     });
-    // this.dataService.updateTodo()
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result){
+        this.dataService.updateTodo(index, result);
+      }
+    });
   } 
+
+  deleteTodo(todo: todo) {
+    const index = this.todoArray.indexOf(todo);
+    this.dataService.deleteTodo(index);
+  }
 
 
 }

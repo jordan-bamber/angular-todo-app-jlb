@@ -1,8 +1,25 @@
-<h1 class="title">Edit Tdo</h1>
+<h1 class="title">Edit Todo</h1>
 <div mat-dialog-content>
     <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
         <div class="field">
-            <input type="text" class="input" placeholder="Type ToDo text here...">
+            <div class="control">
+
+                <input 
+                    type="text" 
+                    class="input" 
+                    [ngModel]="todo.text" 
+                    #todoTextField="ngModel"
+                    name="text"
+                    required 
+                    placeholder="Type ToDo text here..."
+                >
+            </div>      
+             
+            <!-- Form Validation -->
+             <div *ngIf="todoTextField.invalid">
+                <p class="help is-danger" *ngIf="todoTextField.errors?.required">Please enter ToDo text</p>
+            </div>
+        
         </div>
 
         <br>
@@ -13,7 +30,10 @@
             </div>
 
             <div class="control">
-                <button type="submit" class="button is-light">Save</button>
+                <button type="submit" class="button is-light alt-gradient-button">
+                    <i class="material-icons">save</i>
+                    Save
+                </button>
             </div>
         </div>
 

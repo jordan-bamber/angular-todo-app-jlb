@@ -29,6 +29,12 @@
     align-items: center;
 }
 
+.add-todo-box-container {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+}
+
 .add-todo-box {
     padding: 25px;
     background: white;
