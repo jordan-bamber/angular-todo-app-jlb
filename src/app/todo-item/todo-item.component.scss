@@ -1,4 +1,5 @@
 .todo-item {
+    
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -11,7 +12,7 @@
 
     padding: 35px 15px;
 
-    border-bottom: 1px solid #f2f3f5;
+    border-bottom: 2px solid #f2f3f5;
 
     //Should this be down below in completed method?
     &.completed {
@@ -25,8 +26,9 @@
 
     flex-shrink: 0;
 
-    border: 2px solid #eee;
-    border-radius: 50%;
+    //border: 2px solid #eee;
+    border: 2px solid rgb(208, 208, 209);
+    border-radius: 25%;
 
     margin-right: 20px;
 
@@ -39,7 +41,8 @@
         font-size: 20px;
         margin: auto;
 
-        color: #333;
+        //color: #333;
+        color: white;
 
         //hide by default
         opacity: 0;
@@ -57,8 +60,14 @@
 }
 
 .todo-item.completed .check-box {
-    background: #6dff6d;
-    border-color: #6dff6d;
+    background: #3cc28f;
+    border-color: #3cc28f;
+
+    // background: #a1fca1;
+    // border-color: #a1fca1;
+
+    //background: #6dff6d;
+    //border-color: #6dff6d;
 
     i.material-icons {
         opacity: 1;

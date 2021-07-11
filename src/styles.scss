@@ -2,6 +2,11 @@
 @import '../node_modules/bulma/bulma.sass';
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'tippy.js/dist/tippy.css';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+
 
 html, body { height: 100%; }
 body { margin: 0;  }
@@ -9,7 +14,14 @@ body { margin: 0;  }
 //why was !important needed for color?
 .alt-gradient-button {
     border: none;
-    background: linear-gradient(to right, rgb(236,72,140),rgb(240,54,82));
+    
+    //background: linear-gradient(to right, rgb(236,72,140),rgb(240,54,82));
+    
+    // background: linear-gradient(to right, rgb(62, 134, 218),rgb(62, 134, 218));
+    //background: linear-gradient(to right, rgb(62, 134, 218),rgb(62, 182, 218));
+    
+    background: linear-gradient(to right, rgb(47, 152, 184),rgb(62, 182, 218));
+    
     color: white !important;
     font-weight: 600;
     opacity: 0.85;
