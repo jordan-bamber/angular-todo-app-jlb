@@ -1,0 +1,130 @@
+.todo-item {
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 35px 15px;
+    border-bottom: 2px solid #f2f3f5;
+
+    &.completed {
+        color: #aaa;
+    }
+
+}
+
+.todo-item .check-box {
+    height: 28px;
+    width: 28px;
+    display: flex;
+    flex-shrink: 0;
+
+    //border: 2px solid #eee;
+    border: 2px solid rgb(208, 208, 209);
+    border-radius: 25%;
+
+    margin-right: 20px;
+    transition: background-color 0.2s, border-color 0.2s;
+
+    i.material-icons {
+        font-size: 20px;
+        margin: auto;
+
+        color: white;
+
+        //hide by default
+        opacity: 0;
+
+        transition: opacity 0.2s
+    }
+
+}
+
+.todo-item:hover .check-box {
+    
+    background: #eee;
+    i.material-icons {
+        opacity: 0.3;
+    }
+}
+
+.todo-item.completed .check-box {
+    
+    background: #3cc28f;
+    border-color: #3cc28f;
+
+    i.material-icons {
+        opacity: 1;
+    }
+}
+
+.todo-item .todo-controls-box  {
+    
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+
+    display: flex;
+
+    //hide by default
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(2px);
+
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.todo-item:hover .todo-controls-box {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .4s;
+    
+    transform: translateY(0);
+}
+
+.todo-controls-box .todo-control-button {
+    display: flex;
+    background: #f5f7f8;
+
+    padding: 7px 10px;
+
+    i.material-icons    {
+        font-size: 20px;
+    }
+
+    &:hover {
+        background: #eee;
+    }
+
+    &:active {
+        background: #e5e7e8;
+    }
+
+    //do I want to do this?
+    &:first-of-type {
+        border-top-left-radius: 7px;
+    }
+
+    &:last-of-type {
+        border-top-right-radius: 7px;
+    }
+
+}
+
+.todo-controls-box .todo-controls-button.is-edit:hover  i.material-icons {
+    color: #b3b300;
+}
+
+.todo-controls-box .todo-controls-button.is-danger:hover  i.material-icons {
+    color: rgb(155,27,27);
+}
+
+.todo-controls-box .todo-controls-button.is-edit:active  i.material-icons {
+    color: #e9e902;
+}
+
+.todo-controls-box .todo-controls-button.is-danger:active  i.material-icons {
+    color: rgb(209, 37, 37);
+}
