@@ -23,6 +23,7 @@ export class EditTodoDialogComponent implements OnInit {
 
   onFormSubmit(form: NgForm) {
     if(form.invalid) return
+    
     //unpack all values from this.todo, then overwrite the todo text with the updated text from the UI form
     const updatedTodo = {
       ...this.todo,
