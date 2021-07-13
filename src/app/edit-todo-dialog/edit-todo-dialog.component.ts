@@ -8,6 +8,7 @@ import { todo } from '../shared/todo.model';
   templateUrl: './edit-todo-dialog.component.html',
   styleUrls: ['./edit-todo-dialog.component.scss']
 })
+
 export class EditTodoDialogComponent implements OnInit {
 
   constructor(

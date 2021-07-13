@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
-import { DataService } from '../shared/data.service';
 import { todo } from '../shared/todo.model';
 import {TodosStoreService} from '../shared/todos-store.service'
-import { ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -18,7 +17,6 @@ export class TodosComponent implements OnInit {
   todoArray: todo[] = [];
   showValidationErrors: boolean = false;
   
-  //constructor(private dataService: DataService, private dialog: MatDialog) { }
   constructor(public todosStore: TodosStoreService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -42,12 +40,11 @@ export class TodosComponent implements OnInit {
 
   toggleCompleted(todo: todo) {
     todo.completed = !todo.completed
+    this.todosStore.toggleCompleted(todo.id, todo.completed);
   }
 
   editTodo(todo: todo) {
 
-    //alert('Under construction')
-    
     const index = this.todoArray.indexOf(todo);
 
     //Angular MatDialog https://material.angular.io/components/dialog/overview
