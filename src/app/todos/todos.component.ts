@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.component';
 import { DataService } from '../shared/data.service';
 import { todo } from '../shared/todo.model';
+import {TodosStoreService} from '../shared/todos-store.service'
+import { ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-todos',
@@ -15,18 +18,20 @@ export class TodosComponent implements OnInit {
   todoArray: todo[] = [];
   showValidationErrors: boolean = false;
   
-  constructor(private dataService: DataService, private dialog: MatDialog) { }
+  //constructor(private dataService: DataService, private dialog: MatDialog) { }
+  constructor(public todosStore: TodosStoreService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.todoArray = this.dataService.getAllTodos();
+    this.todoArray = this.todosStore.getAllTodos();
   }
 
   //Why in this file?
+  //Add Todo
   onFormSubmit(form: NgForm) {
 
     if(form.invalid) return this.showValidationErrors = true;
 
-    this.dataService.addTodo(new todo(form.value.text));
+    this.todosStore.addTodo(form.value.text);
 
     this.showValidationErrors = false;
     form.reset();
@@ -41,6 +46,8 @@ export class TodosComponent implements OnInit {
 
   editTodo(todo: todo) {
 
+    //alert('Under construction')
+    
     const index = this.todoArray.indexOf(todo);
 
     //Angular MatDialog https://material.angular.io/components/dialog/overview
@@ -51,14 +58,16 @@ export class TodosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if(result){
-        this.dataService.updateTodo(index, result);
+        
+        console.log('result: ', result)
+        this.todosStore.updateTodo(todo.id, result.text);
       }
     });
   } 
 
   deleteTodo(todo: todo) {
     const index = this.todoArray.indexOf(todo);
-    this.dataService.deleteTodo(index);
+    this.todosStore.deleteTodo(todo.id);
   }
 
 

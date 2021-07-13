@@ -34,7 +34,7 @@
       <div class="todos-list">
         
         <app-todo-item
-          *ngFor="let todo of todoArray"
+          *ngFor="let todo of todosStore.todos$ | async"
           [todo]="todo"
           (todoClicked)="toggleCompleted(todo)"
           (editClicked)="editTodo(todo)"
