@@ -23,18 +23,17 @@ export class TodosComponent implements OnInit {
     this.todoArray = this.todosStore.getAllTodos();
   }
 
-  //Why in this file?
-  //Add Todo
   onFormSubmit(form: NgForm) {
 
     if(form.invalid) return this.showValidationErrors = true;
 
-    this.todosStore.addTodo(form.value.text);
+    //trim whitespace from both ends
+    this.todosStore.addTodo(form.value.text.trim());
+    //this.todosStore.addTodo(form.value.text);
 
     this.showValidationErrors = false;
     form.reset();
 
-    //added this so always returns. Good idea?
     return '';
   }
 
