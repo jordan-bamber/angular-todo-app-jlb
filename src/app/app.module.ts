@@ -11,6 +11,7 @@ import { EditTodoDialogComponent } from './edit-todo-dialog/edit-todo-dialog.com
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToolTipDirective } from './shared/tool-tip.directive';
+import { LocalStorageRefService } from './shared/local-storage-ref.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ToolTipDirective } from './shared/tool-tip.directive';
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [LocalStorageRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
