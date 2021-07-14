@@ -10,7 +10,6 @@ export class TodosStoreService {
   private _localStorage: Storage;
 
   private readonly _todos = new BehaviorSubject<todo[]>([]);
-  
 
   // Expose the observable$ part of the _todos subject (read only stream)
   readonly todos$ = this._todos.asObservable();
@@ -24,11 +23,6 @@ export class TodosStoreService {
     this._localStorage.setItem("myData", jsonData);
     //this.todos$.next(data);
   }
-
-  // loadInfo(): void {
-  //   const data = JSON.parse(this._localStorage.getItem("myData"));
-  //   this.todos$.next(data);
-  // }
 
   loadInfo(): any {
       const data = JSON.parse(this._localStorage.getItem("myData"));
@@ -46,17 +40,13 @@ export class TodosStoreService {
     //this.todos$.next(null);
   }
 
-   getAllTodos() {
-    this.todos = this.loadInfo();
+  getAllTodos() {
+    let todos: todo[] = []
+    this.todos = this.loadInfo() ??  todos;
     return this.todos;
   }
 
   readonly allTodos$ = this.todos$
-
-  // // we'll compose the todos$ observable with map operator to create a stream of only completed todos
-  // readonly completedTodos$ = this.todos$.pipe(
-  //   map(todos => todos.filter(todo => todo.completed))
-  // )
 
   // the getter will return the last value emitted in _todos subject
   get todos(): todo[] {
@@ -70,11 +60,12 @@ export class TodosStoreService {
   }
 
   addTodo(text: string) {
-    // we assign a new copy of todos by adding a new todo to it 
-    // with automatically assigned ID ( don't do this at home, use uuid() )
+    //create a new copy of todos, add the new item to it 
+    const newTodo = new todo (text,false,uuid())
+    
     this.todos = [
       ...this.todos, 
-      { text, completed: false, id: uuid()}
+      newTodo
     ];
     
     this.setInfo(this.todos);
@@ -86,9 +77,8 @@ export class TodosStoreService {
     let todo = this.todos.find(todo => todo.id === id);
 
     if(todo) {
-      // we need to make a new copy of todos array, and the todo as well
-      // remember, our state must always remain immutable
-      // otherwise, on push change detection won't work, and won't update its view
+      
+      //create a new copy of todos, add the edited item to it 
       const index = this.todos.indexOf(todo);
       this.todos[index] = {
         ...todo,
@@ -109,9 +99,8 @@ export class TodosStoreService {
     let todo = this.todos.find(todo => todo.id === id);
 
     if(todo) {
-      // we need to make a new copy of todos array, and the todo as well
-      // remember, our state must always remain immutable
-      // otherwise, on push change detection won't work, and won't update its view
+      
+      //create a new copy of todos, add the toggled item to it 
       const index = this.todos.indexOf(todo);
       this.todos[index] = {
         ...todo,
