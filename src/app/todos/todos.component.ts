@@ -5,6 +5,7 @@ import { EditTodoDialogComponent } from '../edit-todo-dialog/edit-todo-dialog.co
 import { todo } from '../shared/todo.model';
 import {TodosStoreService} from '../shared/todos-store.service'
 import { ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import { LocalStorageService } from "../shared/local-storage.service";
 
 
 @Component({
@@ -16,8 +17,12 @@ export class TodosComponent implements OnInit {
 
   todoArray: todo[] = [];
   showValidationErrors: boolean = false;
+  myInfo$ = this._localStorageService.myData$;
   
-  constructor(public todosStore: TodosStoreService, private dialog: MatDialog) {}
+  constructor(
+    public todosStore: TodosStoreService,
+    private _localStorageService: LocalStorageService, 
+    private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.todoArray = this.todosStore.getAllTodos();

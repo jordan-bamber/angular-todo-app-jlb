@@ -5,11 +5,23 @@ import {shareReplay, map} from 'rxjs/operators';
 import { uuid } from './uuid';
 import { LocalStorageRefService } from "./local-storage-ref.service";
 
+interface MyData {
+  text: string,
+  completed: boolean,
+   id?: number
+
+  //todo
+
+}
+
 @Injectable({providedIn: 'root'})
 export class TodosStoreService {
   private _localStorage: Storage;
 
   private readonly _todos = new BehaviorSubject<todo[]>([]);
+
+  private _myData$ = new BehaviorSubject<MyData>(null);
+  myData$ = this._myData$.asObservable();
 
   // Expose the observable$ part of the _todos subject (read only stream)
   readonly todos$ = this._todos.asObservable();
@@ -18,13 +30,13 @@ export class TodosStoreService {
     this._localStorage = _localStorageRefService.localStorage;
   }
 
-  setInfo(data: todo[]): void {
+  setInfo(data:MyData): void {
     const jsonData = JSON.stringify(data);
     this._localStorage.setItem("myData", jsonData);
-    //this.todos$.next(data);
+    this._myData$.next(data);
   }
 
-  loadInfo(): any {
+  loadInfo(): void {
       const data = JSON.parse(this._localStorage.getItem("myData"));
       console.log('parsed data: ', data)
       return data;
@@ -32,17 +44,17 @@ export class TodosStoreService {
 
   clearInfo() {
     this._localStorage.removeItem("myData");
-    //this.todos$.next(null);
+    this._myData$.next(null);
   }
 
   clearAllLocalStorage(): void {
     this._localStorage.clear();
-    //this.todos$.next(null);
+    this._myData$.next(null);
   }
 
   getAllTodos() {
     let todos: todo[] = []
-    this.todos = this.loadInfo() ??  todos;
+   // this.todos = this.loadInfo() ??  todos;
     return this.todos;
   }
 
@@ -68,7 +80,7 @@ export class TodosStoreService {
       newTodo
     ];
     
-    this.setInfo(this.todos);
+    this.setInfo(newTodo);
   }
 
   updateTodo(id: number, text: string) {
@@ -85,14 +97,16 @@ export class TodosStoreService {
         text
       }
       this.todos = [...this.todos];
-      this.setInfo(this.todos);
+
+      //const newTodo = new todo (text,false,uuid())
+      this.setInfo(this.todos[index]);
     }
   }
 
   deleteTodo(id: number) {
     console.log(this.todos, id)
     this.todos = this.todos.filter(todo => todo.id !== id);
-    this.setInfo(this.todos);
+   // this.setInfo(this.todos);
   }
 
   toggleCompleted(id: number, completed: boolean) {
@@ -107,7 +121,7 @@ export class TodosStoreService {
         completed
       }
       this.todos = [...this.todos];
-      this.setInfo(this.todos);
+      this.setInfo(this.todos[index]);
     }
   }
 

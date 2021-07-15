@@ -3,7 +3,12 @@ import { BehaviorSubject } from "rxjs";
 import { LocalStorageRefService } from "./local-storage-ref.service";
 
 interface MyData {
-  
+  // text: string,
+  // completed: boolean,
+  //  id?: number
+
+  todo
+
 }
 
 @Injectable({ providedIn: "root" })
